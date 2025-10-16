@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jaya Krishna Goud · Data Engineer · Portfolio</title>
+  <meta name="description" content="Interactive one-page portfolio for Jaya Krishna Goud — Data Engineer specializing in cloud-native data platforms, streaming, and AI/ML." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0d12;          /* deep space */
+      --card:#121621;        /* soft panel */
+      --muted:#9aa4b2;       /* secondary text */
+      --ink:#e6edf3;         /* primary text */
+      --brand:#6ee7ff;       /* accents */
+      --brand-2:#7c5cff;     /* gradient partner */
+      --ok:#3ddc97;          /* skill chips */
+      --warn:#ffd166;        /* chips */
+      --danger:#ff6b6b;      /* chips */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 800px at 120% -10%, rgba(124,92,255,.25), transparent 40%),
+                              radial-gradient(900px 600px at -20% -10%, rgba(110,231,255,.18), transparent 40%),
+                              var(--bg);color:var(--ink);font-family:Inter,system-ui,Segoe UI,Helvetica,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Header / Nav */
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(11,13,18,.85), rgba(11,13,18,.55)); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+    .logo .badge{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo .badge span{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:900;color:#0b0d12}
+    nav ul{list-style:none;display:flex;gap:16px;margin:0;padding:0}
+    nav a{padding:8px 12px;border-radius:10px;color:var(--muted)}
+    nav a:hover{background:rgba(255,255,255,.06);color:var(--ink)}
+
+    /* Sections */
+    section{max-width:1200px;margin:0 auto;padding:80px 20px}
+    h2{font-size:32px;margin:0 0 16px}
+    .sub{color:var(--muted);margin-bottom:30px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero-card{background:linear-gradient(180deg, rgba(18,22,33,.8), rgba(18,22,33,.6));border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .hero-card:after{content:"";position:absolute;inset:-2px;-webkit-mask:radial-gradient(350px 150px at 110% -10%, #fff 20%, transparent 60%);mask:radial-gradient(350px 150px at 110% -10%, #fff 20%, transparent 60%);background:linear-gradient(135deg, rgba(110,231,255,.12), rgba(124,92,255,.12));}
+    .title{font-size:48px;line-height:1.05;margin:0 0 8px;font-weight:900}
+    .title .grad{background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .role{font-size:20px;color:var(--muted);margin-bottom:16px}
+    .hero-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+    .chip{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);padding:8px 12px;border-radius:12px;font-size:12px;color:var(--muted)}
+    .cta{display:flex;gap:12px;margin-top:24px}
+    .btn{padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f1422;color:var(--ink);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b0d12;font-weight:800}
+
+    .stat-card{background:linear-gradient(180deg, rgba(18,22,33,.9), rgba(18,22,33,.6));border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:24px;display:grid;gap:14px;align-self:stretch}
+    .stat{display:flex;align-items:center;gap:12px}
+    .stat .num{font-weight:900;font-size:28px}
+    .stat small{color:var(--muted)}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:14px}
+    .timeline:before{content:"";position:absolute;left:6px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--brand),transparent)}
+    .t-item{display:grid;grid-template-columns:1fr 3fr;gap:16px;padding:18px;border-radius:16px;margin-bottom:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+    .t-item:hover{transform:translateY(-2px);transition:.25s ease;box-shadow:0 12px 24px rgba(0,0,0,.25)}
+    .t-pill{font-family:"JetBrains Mono",monospace;background:rgba(110,231,255,.15);border:1px solid rgba(110,231,255,.35);padding:8px 10px;border-radius:999px;width:max-content}
+    .t-role{margin:4px 0 8px;font-size:18px;font-weight:700}
+    .t-org{color:var(--muted)}
+    .t-bullets{margin:10px 0 0 0;padding-left:18px;color:#cdd6e3}
+
+    /* Skills */
+    .skills-wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .skill-card{grid-column:span 4;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px;min-height:140px;position:relative;overflow:hidden}
+    .skill-card h3{margin:0 0 8px;font-size:16px}
+    .bar{height:8px;background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden}
+    .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+    .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .tag{font-size:11px;padding:6px 8px;border-radius:10px;border:1px solid rgba(255,255,255,.1);color:var(--muted)}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .p-card{grid-column:span 6;background:linear-gradient(180deg, rgba(18,22,33,.8), rgba(18,22,33,.55));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+    .p-card:hover{transform:translateY(-3px);transition:.25s ease;box-shadow:0 20px 40px rgba(0,0,0,.35)}
+    .p-title{font-weight:800}
+    .p-meta{color:var(--muted);font-size:14px}
+
+    /* Education */
+    .edu{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .edu-card{grid-column:span 6;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px}
+
+    /* Contact */
+    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+    form{display:grid;gap:12px}
+    input,textarea{background:#0f1422;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;color:var(--ink);font:inherit}
+    textarea{min-height:120px}
+    .contact-card{background:linear-gradient(180deg, rgba(18,22,33,.8), rgba(18,22,33,.55));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:18px}
+    .contact-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+
+    /* Footer */
+    footer{padding:40px 20px;color:var(--muted);text-align:center}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .p-card{grid-column:span 12}
+      .edu-card{grid-column:span 12}
+      .skill-card{grid-column:span 6}
+    }
+    @media (max-width: 640px){
+      .skill-card{grid-column:span 12}
+      .title{font-size:36px}
+      h2{font-size:26px}
+    }
+
+    /* Fun hover micro-interactions */
+    .hover-tilt{transform-style:preserve-3d;transition:transform .25s ease}
+    .hover-tilt:hover{transform:perspective(800px) rotateX(4deg) rotateY(-3deg)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="badge" aria-hidden="true"><span>JK</span></div>
+        <div>Jaya Krishna<span style="opacity:.6"> · Data Engineer</span></div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#timeline">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-card hover-tilt">
+      <h1 class="title">Hi, I’m <span class="grad">Jaya Krishna Goud</span></h1>
+      <div class="role">Cloud‑Native Data Engineer • Streaming • AI/ML Ops</div>
+      <p class="sub">I build reliable, real‑time data platforms that power analytics and intelligent automation across healthcare and enterprise systems.</p>
+      <div class="hero-grid" aria-label="Key skills">
+        <span class="chip">AWS Glue</span>
+        <span class="chip">Apache Airflow</span>
+        <span class="chip">Spark</span>
+        <span class="chip">Kafka</span>
+        <span class="chip">Snowflake</span>
+        <span class="chip">RAG / LangChain</span>
+        <span class="chip">CI/CD</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn" href="#contact">Let’s collaborate</a>
+      </div>
+      <div class="contact-grid" style="margin-top:16px">
+        <a class="tag" href="mailto:jayakrishnagoud127@gmail.com">jayakrishnagoud127@gmail.com</a>
+        <span class="tag">Newark, NJ</span>
+        <a class="tag" href="tel:+18623430885">+1 (862) 343‑0885</a>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat"><div class="num">6+ yrs</div><small>End‑to‑end data systems</small></div>
+      <div class="stat"><div class="num">40%↓</div><small>Pipeline failures via Airflow + CW</small></div>
+      <div class="stat"><div class="num">30%↑</div><small>API response gains (FastAPI)</small></div>
+      <div class="stat"><div class="num">Real‑time</div><small>Kafka → Snowflake analytics</small></div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="timeline">
+    <h2>Experience Timeline</h2>
+    <p class="sub">A story of data platforms, streaming pipelines, and AI assistance rolled into production.</p>
+    <div class="timeline">
+      <article class="t-item">
+        <div>
+          <div class="t-pill">Jan 2024 – Present</div>
+        </div>
+        <div>
+          <div class="t-role">Data Engineer · UnitedHealth Group</div>
+          <div class="t-org">Cloud‑native healthcare analytics platform • AWS Glue · Spark · Kafka · Airflow · Redshift/S3 · Power BI</div>
+          <ul class="t-bullets">
+            <li>Designed & optimized ETL for structured/unstructured data; automated orchestration with Airflow.</li>
+            <li>Built Kafka streaming + KStreams for stateful processing; integrated directly with Snowflake.</li>
+            <li>Deployed GenAI/RAG services (LangChain, HF) via FastAPI; improved latency by ~30%.</li>
+            <li>Event‑driven patterns with SQS/SNS/EventBridge; fault‑tolerant ingestion and retries.</li>
+            <li>Monitoring & AIOps (CloudWatch, Splunk, Prometheus) for anomaly detection and alerting.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="t-item">
+        <div>
+          <div class="t-pill">Jan 2019 – Mar 2023</div>
+        </div>
+        <div>
+          <div class="t-role">Data Analyst · Accenture</div>
+          <div class="t-org">Unified marketing & sales analytics • SQL · Python · Airflow · Power BI · EDA/ML</div>
+          <ul class="t-bullets">
+            <li>Automated ETL + validation to 99.5% data accuracy; real‑time dashboards boosted effectiveness by 25%.</li>
+            <li>EDA + ML (Pandas/NumPy/Scikit‑learn) for segmentation and trend insights.</li>
+            <li>Partnered with stakeholders to translate analytics into decisions and KPIs.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>Skills & Tooling</h2>
+    <p class="sub">From pipelines to products — the stack I reach for most.</p>
+    <div class="skills-wrap">
+      <div class="skill-card hover-tilt">
+        <h3>Data Engineering</h3>
+        <div class="bar" aria-hidden="true"><span style="--w:92%"></span></div>
+        <div class="stack">
+          <span class="tag">Airflow</span><span class="tag">AWS Glue</span><span class="tag">Spark</span><span class="tag">Kafka</span><span class="tag">Snowflake</span>
+        </div>
+      </div>
+      <div class="skill-card hover-tilt">
+        <h3>Cloud & DevOps</h3>
+        <div class="bar"><span style="--w:88%"></span></div>
+        <div class="stack"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span></div>
+      </div>
+      <div class="skill-card hover-tilt">
+        <h3>ML & GenAI</h3>
+        <div class="bar"><span style="--w:80%"></span></div>
+        <div class="stack"><span class="tag">LangChain</span><span class="tag">Transformers</span><span class="tag">RAG</span><span class="tag">FastAPI</span><span class="tag">MLflow</span></div>
+      </div>
+      <div class="skill-card hover-tilt">
+        <h3>BI & Viz</h3>
+        <div class="bar"><span style="--w:84%"></span></div>
+        <div class="stack"><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">DAX</span><span class="tag">Matplotlib</span></div>
+      </div>
+      <div class="skill-card hover-tilt">
+        <h3>Databases</h3>
+        <div class="bar"><span style="--w:86%"></span></div>
+        <div class="stack"><span class="tag">Redshift</span><span class="tag">PostgreSQL</span><span class="tag">MySQL</span><span class="tag">MongoDB</span></div>
+      </div>
+      <div class="skill-card hover-tilt">
+        <h3>Programming</h3>
+        <div class="bar"><span style="--w:90%"></span></div>
+        <div class="stack"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Java</span><span class="tag">JS/TS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Selected Projects</h2>
+    <p class="sub">A few highlights showing data craftsmanship, systems thinking, and user‑centric delivery.</p>
+    <div class="projects">
+      <article class="p-card hover-tilt">
+        <div class="p-title">Intelligent Knowledge Assistant (GenAI + RAG)</div>
+        <div class="p-meta">LangChain · Pinecone · HF · FastAPI · AWS</div>
+        <p>Retrieval‑augmented chatbot serving contextual answers from large unstructured datasets with async inference for real‑time decisions.</p>
+      </article>
+      <article class="p-card hover-tilt">
+        <div class="p-title">COVID‑19 Data Pipeline & Dashboard</div>
+        <div class="p-meta">Airflow · PostgreSQL · S3 · Power BI</div>
+        <p>Automated ingestion + daily refreshes powering interactive dashboards for cases, recoveries, and fatalities across regions.</p>
+      </article>
+      <article class="p-card hover-tilt">
+        <div class="p-title">AI‑Based Retail Sales Forecasting</div>
+        <div class="p-meta">Python · Scikit‑learn · Feature Engineering</div>
+        <p>Time‑series + regression predicting SKU/store sales with seasonality and promo effects; accuracy improved by 20%.</p>
+      </article>
+      <article class="p-card hover-tilt">
+        <div class="p-title">House Rent Prediction</div>
+        <div class="p-meta">Python · OOP · Viz</div>
+        <p>Explored real‑world housing datasets and engineered features; reusable codebase with intuitive visual insights.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu">
+      <div class="edu-card hover-tilt">
+        <strong>Saint Peter’s University (NJ)</strong>
+        <div>Master’s · Data Science</div>
+      </div>
+      <div class="edu-card hover-tilt">
+        <strong>Vignan Institute of Science (IN)</strong>
+        <div>Bachelor’s · Computer Science</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Let’s Build Something</h2>
+    <p class="sub">Open to data/ML platform roles, real‑time analytics, and AI‑powered products.</p>
+    <div class="contact">
+      <form onsubmit="event.preventDefault(); alert('Thanks! I\'ll get back to you soon.');">
+        <input type="text" placeholder="Your name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message"></textarea>
+        <button class="btn primary" type="submit">Send Message</button>
+      </form>
+      <div class="contact-card">
+        <div style="font-weight:700">Reach me directly</div>
+        <div class="contact-grid">
+          <a class="tag" href="mailto:jayakrishnagoud127@gmail.com">Email</a>
+          <a class="tag" href="tel:+18623430885">Call</a>
+          <a class="tag" href="#">LinkedIn</a>
+          <a class="tag" href="#">GitHub</a>
+        </div>
+        <p class="sub" style="margin-top:12px">Based in Newark, NJ • Available for hybrid/remote</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <small>© <span id="yr"></span> Jaya Krishna Goud. Crafted with HTML · CSS · GSAP.</small>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-3qRZKc0q8eE9XfE2xg1nQ7oYb9z9rQfV9yKDW6Qk3p9FQ1nq0nh3b5wP1i0q2INz2rjv0o0m0mYf0Vb7C2X7ZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    // Utility
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Smooth reveal for hero
+    gsap.from('.hero-card',{y:30, opacity:0, duration:0.9, ease:'power3.out'});
+    gsap.from('.stat-card .stat',{opacity:0, y:16, stagger:0.08, delay:0.2, duration:0.6});
+
+    // Hover tilt subtle effect via pointer
+    document.querySelectorAll('.hover-tilt').forEach(card=>{
+      card.addEventListener('mousemove', (e)=>{
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left; const y = e.clientY - r.top;
+        const rx = ((y/r.height)-0.5)*6; const ry = ((x/r.width)-0.5)*-6;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      });
+      card.addEventListener('mouseleave', ()=> card.style.transform = '');
+    });
+
+    // Scroll animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Section title underlines
+    document.querySelectorAll('section h2').forEach(h=>{
+      const u = document.createElement('span');
+      u.style.display='block';u.style.height='3px';u.style.marginTop='10px';
+      u.style.background='linear-gradient(90deg, var(--brand), var(--brand-2))';
+      u.style.borderRadius='999px';
+      h.appendChild(u);
+      gsap.from(u,{scaleX:0, transformOrigin:'left', duration:.8,
+        scrollTrigger:{trigger:h,start:'top 80%'}})
+    });
+
+    // Timeline items
+    gsap.utils.toArray('.t-item').forEach((el,i)=>{
+      gsap.from(el,{opacity:0, y:30, duration:.6, delay:i*0.05,
+        scrollTrigger:{trigger:el,start:'top 85%'}})
+    });
+
+    // Skill bars animate width from CSS var
+    document.querySelectorAll('.bar > span').forEach((bar,i)=>{
+      const w = bar.getAttribute('style').match(/--w:([^;]+)/)?.[1] || '75%';
+      gsap.fromTo(bar,{width:'0%'},{width:w,duration:1.1, ease:'power2.out',
+        scrollTrigger:{trigger:bar.parentElement, start:'top 85%'}})
+    });
+
+    // Project cards stagger
+    gsap.utils.toArray('.p-card').forEach((card,i)=>{
+      gsap.from(card,{opacity:0, y:24, duration:.7, delay:i*0.05,
+        scrollTrigger:{trigger:card, start:'top 85%'}})
+    });
+
+    // Parallax background shimmer (subtle)
+    gsap.to('body',{
+      backgroundPosition:"0px 0px, 0px 0px, 0 0",
+      scrollTrigger:{scrub:true}
+    });
+
+    // Smooth scroll for nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href'); if(id.length>1){
+          e.preventDefault(); document.querySelector(id).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
